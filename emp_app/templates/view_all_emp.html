@@ -35,6 +35,7 @@
             <th scope="col">Role</th>
             <th scope="col">Department</th>
             <th scope="col">Hiring Date</th>
+            <th scope="col">Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -48,6 +49,7 @@
                 <td>{{ emp.role.name }}</td>
                 <td>{{ emp.dept.name }}</td>
                 <td>{{ emp.hire_date }}</td>
+                <td><a class="text-reset text-primary" href="{% url 'edit_emp' emp.id %}">Edit</a></td>
             </tr>
         {% endfor %}
         </tbody>

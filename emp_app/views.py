@@ -1,7 +1,9 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .models import Employee, Role, Department
 import datetime
 from django.db.models import Q
+from django.http import Http404
+
 
 # Create your views here.
 def index(request):
@@ -52,7 +54,7 @@ def remove_emp(request, emp_id=-1):
 
 
 def filter_emp(request):
-    if request.method=="POST":
+    if request.method == "POST":
         filters = []
         name = request.POST["name"]
         dept = request.POST["dept"]
@@ -70,11 +72,27 @@ def filter_emp(request):
             filters.append("Role")
 
         context = {
-            'emps':emps,
-            "filters":filters
+            'emps': emps,
+            "filters": filters
         }
-        return render(request, 'view_all_emp.html',context)
-    elif request.method=="GET":
-        return render(request,'filter_emp.html')
+        return render(request, 'view_all_emp.html', context)
+    elif request.method == "GET":
+        return render(request, 'filter_emp.html')
     else:
         return HttpResponse("An error occured!")
+
+
+def edit_emp(request, emp_id: int):
+    employeeProfile = get_object_or_404(Employee, id=emp_id)
+    if request.method == "POST":
+        # employeeProfile = get_object_or_404(Employee, id=emp_id)
+        employeeProfile.first_name = request.POST["first_name"]
+        employeeProfile.last_name = request.POST["last_name"]
+        employeeProfile.phone = int(request.POST["phone"])
+        employeeProfile.save()
+        return redirect(to="all_emp")
+    elif request.method == "GET":
+        context = {'emp':employeeProfile}
+        return render(request, "update_emp.html", context=context)
+
+
