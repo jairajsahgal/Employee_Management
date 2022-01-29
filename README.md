@@ -18,12 +18,15 @@ Django Application for Employee Management
 ## 3. Filter Employees
 ![Filter](https://github.com/jairajsahgal/Employee_Management/blob/master/image.png?raw=true)
 
-## 4. Delete Employee
+## 4. Update Employee Information
+![Update](https://github.com/jairajsahgal/Employee_Management/blob/master/Screenshot%202022-01-30%20at%2003-14-23%20Document.png?raw=true)
+
+## 5. Delete Employee
 ![Delete](https://github.com/jairajsahgal/Employee_Management/blob/master/Screenshot%202022-01-29%20at%2017-29-03%20Remove%20an%20Employee.png?raw=true)
 
 
 # Future Improvements
-- [ ] Add Update functionality.
+- [x] Add Update functionality.
 - [ ] Add Authentication and authorisation of resources.
 - [ ] Add more CSS in the project.
 - [ ] Profile Image of the employee with the separate page.
