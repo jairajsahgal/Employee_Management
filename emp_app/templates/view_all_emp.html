@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View All Employees Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+{% if filters %}
+    {% if filters|length > 2 %}
+        <h1>Details filtered by {{ filters.0 }},{{ filters.1 }} and {{ filters.2 }}</h1>
+    {% elif filters|length == 2 %}
+        <h1>Details filtered by {{ filters.0 }} and {{ filters.1 }}</h1>
+    {% else %}
+        <h1>Details filtered by {{ filters.0 }}</h1>
+    {% endif %}
+{% else %}
+    <h1>All Employee Details</h1>
+{% endif %}
+<hr>
+<div>
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Role</th>
+            <th scope="col">Department</th>
+            <th scope="col">Hiring Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for emp in emps %}
+            <tr>
+                <th scope="row">{{ emp.id }}</th>
+                <td>{{ emp.first_name }}</td>
+                <td>{{ emp.last_name }}</td>
+                <td>{{ emp.salary }}</td>
+                <td>{{ emp.phone }}</td>
+                <td>{{ emp.role.name }}</td>
+                <td>{{ emp.dept.name }}</td>
+                <td>{{ emp.hire_date }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

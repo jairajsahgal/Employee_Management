@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add an Employee</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<h1>Add an Employee!</h1>
+<form action="{% url "add_emp" %}" method="POST">
+    {% csrf_token %}
+    <label for="first_name" class="form-label">First Name</label><br>
+    <input type="text" class="form-control" name="first_name" id="first_name" aria-describedby="First Name"
+           value="{{ first_name }}"><br>
+
+    <label for="first_name" class="form-label">Last Name</label><br>
+    <input type="text" class="form-control" id="last_name" name="last_name" aria-describedby="Last Name"
+           value="{{ last_name }}"><br>
+
+    <label for="salary" class="form-label">Salary</label><br>
+    <input type="number" class="form-control" id="salary" name="salary" aria-describedby="Phone Number"
+           value="{{ salary }}"><br>
+
+    <label for="phone" class="form-label">Phone</label><br>
+    <input type="number" class="form-control" id="phone" name="phone" aria-describedby="Phone Number"
+           value="{{ salary }}"><br>
+
+
+    <label for="department" class="form-label">Department</label><br>
+    <input type="text" class="form-control" id="dept" name="dept" aria-describedby="Department Name" value="{{ dept }}"><br>
+
+    <label for="role" class="form-label">Role</label><br>
+    <input type="text" class="form-control" id="role" name="role" aria-describedby="Role Employee Do"
+           value="{{ role }}"><br>
+
+    <label for="bonus" class="form-label">Bonus</label><br>
+    <input type="number" class="form-control" id="bonus" name="bonus" aria-describedby="Bonus" value="{{ bonus }}"><br>
+    <hr>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>
